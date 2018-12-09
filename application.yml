@@ -1,7 +1,8 @@
 # 请保存utf8格式
 spring:
   profiles:
-    active: dev
+    active: 
+    - dev
 
 ---                                                                     # 分隔符
 
