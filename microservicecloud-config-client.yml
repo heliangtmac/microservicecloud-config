@@ -5,16 +5,33 @@ spring:
     - dev
 
 ---                                                                     # 分隔符
-
+server:
+  port: 8201
 spring:
   profiles: dev                                                         # 开发环境
   application:
-    name: microservicecloud-config-tmac-dev                             # 服务名称
+    name: microservicecloud-config-client                               # 服务名称
+eureka:
+  client:                                                               # 客户端注册进Eurekaf服务列表内
+    service-url:      
+      defaultZone: http://eureka-dev.com:7001/eureka/                   # 注册地址
+  instance:
+    instance-id: microservicecloud-config-client                        # 服务名称
+    prefer-ip-address: true                                             # 访问路径显示ip地址
 
 ---                                                                     # 分隔符
 
+server:
+  port: 8202
 spring:
   profiles: test                                                        # 测试环境
   application:
-    name: microservicecloud-config-tmac-test                            # 服务名称
+    name: microservicecloud-config-client                               # 服务名称
+eureka:
+  client:                                                               # 客户端注册进Eurekaf服务列表内
+    service-url:      
+      defaultZone: http://eureka-test.com:7001/eureka/                  # 注册地址
+  instance:
+    instance-id: microservicecloud-config-client                        # 服务名称
+    prefer-ip-address: true                                             # 访问路径显示ip地址
 
