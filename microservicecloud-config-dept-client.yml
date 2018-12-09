@@ -1,0 +1,85 @@
+spring:
+  profiles:
+    active:
+    - dev
+
+---
+
+server:
+  port: 8001                                            # 服务端口号
+spring:
+  profiles: dev
+  application:
+    name: microservicecloud-dept                        # 服务名称（名字很重要，对外暴露的微服务名称）
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource        # 当前数据源操作类型
+    driver-class-name: org.gjt.mm.mysql.Driver          # mysql驱动包
+    url: jdbc:mysql://localhost:3306/cloudDB01          # 数据库名称
+    username: root                                      # 数据库用户名
+    password: root                                      # 数据库密码
+    dbcp2:
+      min-idle: 5                                       # 数据库连接池最小维持连接数
+      initial-size: 5                                   # 初始化连接数
+      max-total: 5                                      # 最大连接数
+      max-wait-millis: 200                              # 等待连接获取的最大超时时间
+
+mybatis:
+  config-location: classpath:mybatis/mybatis.cfg.xml    # mybatis配置文件路径
+  type-aliases-package: com.tmac.springcloud.entities   # 所有Entity别名类所在包
+  mapper-locations: classpath:mybatis/mapper/**/*.xml   # mapper映射文件
+
+eureka:
+  client:                                               # 客户端注册进Eurekaf服务列表内
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka/   # 注册地址
+  instance:
+    instance-id: microservicecloud-dept-dev-8001        # 服务名称
+    prefer-ip-address: true                             # 访问路径显示ip地址
+
+# 注册进Eureka后的服务信息配置
+info:
+  app.name: tmac-microservicecloud-8001
+  company.name: www.tmac.com
+  build.artifactId: $project.artifactId$
+  build.version: $project.version$
+
+---
+
+server:
+  port: 8001                                            # 服务端口号
+spring:
+  profiles: test
+  application:
+    name: microservicecloud-dept                        # 服务名称（名字很重要，对外暴露的微服务名称）
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource        # 当前数据源操作类型
+    driver-class-name: org.gjt.mm.mysql.Driver          # mysql驱动包
+    url: jdbc:mysql://localhost:3306/cloudDB01          # 数据库名称
+    username: root                                      # 数据库用户名
+    password: root                                      # 数据库密码
+    dbcp2:
+      min-idle: 5                                       # 数据库连接池最小维持连接数
+      initial-size: 5                                   # 初始化连接数
+      max-total: 5                                      # 最大连接数
+      max-wait-millis: 200                              # 等待连接获取的最大超时时间
+
+mybatis:
+  config-location: classpath:mybatis/mybatis.cfg.xml    # mybatis配置文件路径
+  type-aliases-package: com.tmac.springcloud.entities   # 所有Entity别名类所在包
+  mapper-locations: classpath:mybatis/mapper/**/*.xml   # mapper映射文件
+
+eureka:
+  client:                                               # 客户端注册进Eurekaf服务列表内
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka/   # 注册地址
+  instance:
+    instance-id: microservicecloud-dept-test-8001       # 服务名称
+    prefer-ip-address: true                             # 访问路径显示ip地址
+
+# 注册进Eureka后的服务信息配置
+info:
+  app.name: tmac-microservicecloud-8001
+  company.name: www.tmac.com
+  build.artifactId: $project.artifactId$
+  build.version: $project.version$
+

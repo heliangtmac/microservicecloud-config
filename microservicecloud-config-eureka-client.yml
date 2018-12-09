@@ -1,0 +1,48 @@
+eureka:
+  instance:
+    hostname: eureka7001.com
+  client:
+    registerWithEureka: false  # 禁止向eureka注册服务，因为它自己本身就是服务器
+    fetchRegistry: false       # 这里不需要抓取注册表
+    serviceUrl:
+      defaultZone: http://eureka7001.com:7001/eureka/
+
+---
+
+server:
+  port: 7001
+
+spring:
+  profile: dev
+  application:
+    name: microservicecloud-config-eureka-client
+
+eureka:
+  instance:
+    hostname: eureka7001.com
+  client:
+    registerWithEureka: false  # 禁止向eureka注册服务，因为它自己本身就是服务器
+    fetchRegistry: false       # 这里不需要抓取注册表
+    serviceUrl:
+      defaultZone: http://eureka7001.com:7001/eureka/
+
+---
+
+server:
+  port: 7001
+
+spring:
+  profile: test
+  application:
+    name: microservicecloud-config-eureka-client
+
+eureka:
+  instance:
+    hostname: eureka7001.com
+  client:
+    registerWithEureka: false  # 禁止向eureka注册服务，因为它自己本身就是服务器
+    fetchRegistry: false       # 这里不需要抓取注册表
+    serviceUrl:
+      defaultZone: http://eureka7001.com:7001/eureka/
+
+
